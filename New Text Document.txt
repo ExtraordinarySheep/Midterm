@@ -1,0 +1,31 @@
+import {useForm} from 'react-hook-form';
+import {react} from 'react';
+
+function shopForm(){
+    
+    const {register, handleSubmit, formState: {errors}, reset} = useForm();
+
+    const submit = (data) => {
+        console.log(data);
+    };
+
+    const cancel = () => {
+            reset()
+    }
+
+
+    return (
+        <form onSubmit={handleSubmit(submit)}>
+            <label>New Shop</label>
+            <br/>
+            <input type='text'placeholder='Name'{...register('name', {required: true})}></input>
+            <br/>
+            <input type='text'placeholder='Description'{...register('description', {required: true})}></input>
+            <br/>
+            <button type='submit'>SUBMIT</button>
+            <button type='button' onClick={cancel}>CANCEL</button>
+        </form>
+    )
+}
+
+export default shopForm;
